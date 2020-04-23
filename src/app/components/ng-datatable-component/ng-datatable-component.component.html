@@ -20,7 +20,7 @@
     (keydown.enter)="updateTable()"
     id="pageSize">
   </div>
-  <nav >
+  <nav class="nav-bar">
     <ul class="pagination">
       <li (click)="showPageData(i)" *ngFor="let item of [].constructor(pages); let i=index" [class.active]="page.number===i" class="pagination-item"><a class="page-link">{{i+1}}</a></li>
     </ul>
