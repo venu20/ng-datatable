@@ -1,0 +1,28 @@
+<div>
+  <table *ngIf="employees">
+    <thead>
+      <tr>
+          <th *ngFor="let col of columns">{{col}}</th>
+          <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let employee of paginated_employees">
+        <td *ngFor="let col of columns">{{employee[col]}}</td>
+        <td> <button (click)="onSubmit(employee.id, employee.status)">Submit</button> </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="form-group">
+    <label for="page size">page size</label>
+    <input type="number" class="form-control"
+    [(ngModel)]="page.size"
+    (keydown.enter)="updateTable()"
+    id="pageSize">
+  </div>
+  <nav >
+    <ul class="pagination">
+      <li (click)="showPageData(i)" *ngFor="let item of [].constructor(pages); let i=index" [class.active]="page.number===i" class="pagination-item"><a class="page-link">{{i+1}}</a></li>
+    </ul>
+  </nav>
+</div>
